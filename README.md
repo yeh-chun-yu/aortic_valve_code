@@ -59,12 +59,6 @@ Example for CUDA 11.8:
 pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
 ```
 
-CPU-only example:
-
-```bash
-pip install torch torchvision torchaudio
-```
-
 Check whether PyTorch can use GPU:
 
 ```bash

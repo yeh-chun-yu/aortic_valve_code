@@ -3,6 +3,7 @@ import os
 import gc
 import torch
 
+
 def main():
     model_list = [
         "12n", "12s", "12m", "12l", "12x",
@@ -12,13 +13,13 @@ def main():
 
     for model_name in model_list:
         for fold in range(5):
-            print(f"\n===== 測試模型: {model_name} | fold{fold} =====")
+            print(f"\n===== Testing model: {model_name} | fold{fold} =====")
 
             weight_path = f"./runs/detect/last/yolo{model_name}_fold{fold}/weights/best.pt"
-            data_path = f"data_full_fold_test.yaml"
+            data_path = "data_full_fold_test.yaml"
 
             if not os.path.exists(weight_path):
-                print(f"找不到權重，跳過: {weight_path}")
+                print(f"Weight file not found, skipping: {weight_path}")
                 continue
 
             model = YOLO(weight_path)
@@ -32,8 +33,10 @@ def main():
             del results
             del model
             gc.collect()
+
             if torch.cuda.is_available():
                 torch.cuda.empty_cache()
+
 
 if __name__ == "__main__":
     import multiprocessing as mp

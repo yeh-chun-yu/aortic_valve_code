@@ -60,7 +60,7 @@ def main():
         for top_n in top_list:
             selected_folds = ranks[:top_n]
 
-            print(f"\n===== Ensemble 測試模型: {model_name} | top{top_n} folds {selected_folds} =====")
+            print(f"\n===== Ensemble testing model: {model_name} | top{top_n} folds {selected_folds} =====")
 
             weight_paths = []
 
@@ -68,13 +68,13 @@ def main():
                 weight_path = f"./runs/detect/last/{model_name}_fold{fold}/weights/best.pt"
 
                 if not os.path.exists(weight_path):
-                    print(f"找不到權重，跳過此 fold: {weight_path}")
+                    print(f"Weight file not found, skipping this fold: {weight_path}")
                     continue
 
                 weight_paths.append(weight_path)
 
             if len(weight_paths) < top_n:
-                print(f"{model_name} top{top_n} 權重不足，跳過")
+                print(f"Insufficient weights for {model_name} top{top_n}, skipping")
                 continue
 
             model = build_ensemble(weight_paths, device=device)

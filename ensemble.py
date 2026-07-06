@@ -11,7 +11,7 @@ def build_ensemble(weight_paths, device="0"):
     ensemble_model = Ensemble()
 
     for w in weight_paths:
-        #print(f"載入權重: {w}")
+        # print(f"Loading weight: {w}")
         m, ckpt = load_checkpoint(w, device=device, fuse=True)
         ensemble_model.append(m)
 
@@ -52,7 +52,7 @@ def main():
         "12l": [3, 4, 0, 1, 2],
         "12x": [3, 2, 4, 0, 1],
 
-        "11n": [3, 1, 0, 2, 4],  
+        "11n": [3, 1, 0, 2, 4],
         "11s": [3, 4, 0, 1, 2],
         "11m": [3, 0, 4, 2, 1],
         "11l": [3, 2, 4, 1, 0],
@@ -68,14 +68,13 @@ def main():
     data_path = "data_full_fold_test.yaml"
     device = "0"
 
-
     top_list = [1, 2, 3, 4, 5]
 
     for model_name, ranks in fold_rank.items():
         for top_n in top_list:
             selected_folds = ranks[:top_n]
 
-            print(f"\n===== Ensemble 測試模型: {model_name} | top{top_n} folds {selected_folds} =====")
+            print(f"\n===== Ensemble testing model: {model_name} | top{top_n} folds {selected_folds} =====")
 
             weight_paths = []
 
@@ -83,16 +82,16 @@ def main():
                 weight_path = f"./runs/detect/last/yolo{model_name}_fold{fold}/weights/best.pt"
 
                 if not os.path.exists(weight_path):
-                    print(f"找不到權重，跳過此 fold: {weight_path}")
+                    print(f"Weight file not found, skipping this fold: {weight_path}")
                     continue
 
                 weight_paths.append(weight_path)
 
             if len(weight_paths) < top_n:
-                print(f"{model_name} top{top_n} 權重不足，跳過")
+                print(f"Insufficient weights for {model_name} top{top_n}, skipping")
                 continue
 
-            #print(f"{model_name} 使用 {len(weight_paths)} 個 fold 做 ensemble")
+            # print(f"Using {len(weight_paths)} folds for {model_name} ensemble")
 
             model = build_ensemble(weight_paths, device=device)
 

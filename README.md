@@ -273,24 +273,6 @@ The models are evaluated using the following object detection metrics:
 - PyTorch previous versions: https://pytorch.org/get-started/previous-versions/
 - Ultralytics YOLO GitHub: https://github.com/ultralytics/ultralytics/tree/main
 
-## GitHub Upload Notes
-
-The following files or folders should not be uploaded to GitHub:
-
-```gitignore
-dataset_challenge_2/
-datasets/
-datasets_full/
-runs/
-wandb/
-*.zip
-*.pt
-*.pth
-*.onnx
-*.engine
-*.cache
-__pycache__/
-```
 
 ## License
 
@@ -299,7 +281,3 @@ This repository is released under the AGPL-3.0 License.
 ## Acknowledgement
 
 This project is based on the Ultralytics YOLO framework.
-
-## Author
-
-Chun-Yu Yeh

@@ -2,8 +2,9 @@ from ultralytics import YOLO
 import gc
 import torch
 
+
 def main():
-    model_list = [   
+    model_list = [
         "yolo12n.pt", "yolo11n.pt", "yolov9t.pt",
         "yolo12s.pt", "yolo11s.pt", "yolov9s.pt",
         "yolo12m.pt", "yolo11m.pt", "yolov9m.pt",
@@ -14,11 +15,11 @@ def main():
     small_batch_models = {"yolo12x.pt", "yolo11x.pt", "yolov9e.pt"}
 
     for model_name in model_list:
-        # 根據模型大小決定 batch
+        # Set batch size based on model size
         batch_size = 8 if model_name in small_batch_models else 16
 
         for fold in range(5):
-            print(f"\n===== 模型: {model_name} | fold{fold} | batch={batch_size} =====")
+            print(f"\n===== Model: {model_name} | fold{fold} | batch={batch_size} =====")
 
             model = YOLO(model_name)
 
@@ -31,12 +32,14 @@ def main():
                 device="0",
             )
 
-            # 釋放記憶體
+            # Release memory
             del results
             del model
             gc.collect()
+
             if torch.cuda.is_available():
                 torch.cuda.empty_cache()
+
 
 if __name__ == "__main__":
     import multiprocessing as mp

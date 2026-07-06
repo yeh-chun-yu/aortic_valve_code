@@ -13,7 +13,7 @@ def main():
         "ultralytics/cfg/models/12/yolo12x-p34.yaml"
     ]
 
-    # 大模型用較小 batch
+    # Use a smaller batch size for larger models
     small_batch_models = {
         "yolo12x-p34.yaml",
     }
@@ -25,7 +25,7 @@ def main():
         batch_size = 8 if model_file in small_batch_models else 16
 
         for fold in range(5):
-            print(f"\n===== 模型: {model_stem} | fold{fold} | batch={batch_size} =====")
+            print(f"\n===== Model: {model_stem} | fold{fold} | batch={batch_size} =====")
 
             model = YOLO(model_path)
 

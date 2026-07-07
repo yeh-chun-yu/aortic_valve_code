@@ -70,7 +70,7 @@ Install Git with Conda if it is not installed:
 
 ```bash
 conda install git -y
-
+```
 Clone this repository:
 
 ```bash

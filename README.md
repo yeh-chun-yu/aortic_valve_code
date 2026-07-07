@@ -64,8 +64,12 @@ Check whether PyTorch can use GPU:
 ```bash
 python -c "import torch; print(torch.__version__); print(torch.cuda.is_available())"
 ```
-
 ## Install This Repository
+
+Install Git with Conda if it is not installed:
+
+```bash
+conda install git -y
 
 Clone this repository:
 

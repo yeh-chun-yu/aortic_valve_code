@@ -1,11 +1,11 @@
 # Aortic Valve Detection
 
-This repository provides code for aortic valve object detection in cardiac CT images using Ultralytics YOLO models. It includes baseline YOLO models, the proposed YOLOv12-P34 models, 5-fold training, testing, inference, and ensemble evaluation scripts.
+This repository provides code for aortic valve object detection in cardiac CT images using Ultralytics YOLO models. It includes baseline YOLO models, the proposed YOLOv12-P5 models, 5-fold training, testing, inference, and ensemble evaluation scripts.
 
 ## Main Features
 
 - Train and test YOLOv9, YOLO11, and YOLO12 models
-- Train and test YOLOv12-P34 models
+- Train and test YOLOv12-P5 models
 - Prepare challenge ZIP files into YOLO-format datasets
 - Generate 5-fold YAML files based on `fold_patient_split.csv`
 - Run single-model inference
@@ -15,13 +15,13 @@ This repository provides code for aortic valve object detection in cardiac CT im
 
 - `train.py`: Train baseline YOLOv9, YOLO11, and YOLO12 models.
 - `test.py`: Test baseline YOLOv9, YOLO11, and YOLO12 models.
-- `train_p34.py`: Train YOLOv12-P34 models.
-- `test_p34.py`: Test YOLOv12-P34 models.
+- `train_p5.py`: Train YOLOv12-P5 models.
+- `test_p5.py`: Test YOLOv12-P5 models.
 - `ensemble.py`: Ensemble evaluation for baseline YOLO models.
-- `ensemble_p34.py`: Ensemble evaluation for YOLOv12-P34 models.
+- `ensemble_p5.py`: Ensemble evaluation for YOLOv12-P5 models.
 - `split_data.py`: Extract ZIP files, organize datasets, split data into 5 folds, and generate YAML files.
 - `fold_patient_split.csv`: Patient-level 5-fold split file.
-- `ultralytics/`: Modified Ultralytics source code and YOLOv12-P34 YAML model files.
+- `ultralytics/`: Modified Ultralytics source code and YOLOv12-P5 YAML model files.
 - `pyproject.toml`: Project dependency configuration.
 
 ## Environment Setup with Anaconda
@@ -179,10 +179,10 @@ Train baseline YOLO models:
 python train.py
 ```
 
-Train YOLOv12-P34 models:
+Train YOLOv12-P5 models:
 
 ```bash
-python train_p34.py
+python train_p5.py
 ```
 
 Training outputs are saved under:
@@ -199,10 +199,10 @@ Test baseline YOLO models:
 python test.py
 ```
 
-Test YOLOv12-P34 models:
+Test YOLOv12-P5 models:
 
 ```bash
-python test_p34.py
+python test_p5.py
 ```
 
 Testing outputs are saved under:
@@ -217,7 +217,7 @@ Run inference with a trained model:
 
 ```bash
 yolo predict \
-  model=./runs/detect/last/yolo12l-p34_fold0/weights/best.pt \
+  model=./runs/detect/last/yolo12l-p5_fold0/weights/best.pt \
   source=../datasets_full/fold0/test/images \
   imgsz=640 \
   conf=0.25 \
@@ -231,7 +231,7 @@ Python inference example:
 ```python
 from ultralytics import YOLO
 
-model = YOLO("./runs/detect/last/yolo12l-p34_fold0/weights/best.pt")
+model = YOLO("./runs/detect/last/yolo12l-p5_fold0/weights/best.pt")
 
 results = model.predict(
     source="../datasets_full/fold0/test/images",
@@ -257,10 +257,10 @@ Run baseline YOLO ensemble evaluation:
 python ensemble.py
 ```
 
-Run YOLOv12-P34 ensemble evaluation:
+Run YOLOv12-P5 ensemble evaluation:
 
 ```bash
-python ensemble_p34.py
+python ensemble_p5.py
 ```
 
 The ensemble scripts load trained fold weights from `runs/detect/last/` and evaluate different top-N fold combinations.

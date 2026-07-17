@@ -451,7 +451,7 @@ def build_folds_from_csv():
 
         print(f"[OK] Fold {fold} dataset created at: {fold_dir}")
 
-    # The current test.py and test_p34.py use data_full_fold_test.yaml.
+    # The current test.py and test_p5.py use data_full_fold_test.yaml.
     # The testing set is the same for all folds, so this file points to fold0/test.
     write_data_yaml(
         yaml_path=Path("./data_full_fold_test.yaml"),

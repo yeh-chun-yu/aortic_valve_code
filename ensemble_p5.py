@@ -44,11 +44,11 @@ def build_ensemble(weight_paths, device="0"):
 
 def main():
     fold_rank = {
-        "yolo12n-p34": [4, 0, 2, 1, 3],
-        "yolo12s-p34": [4, 0, 3, 2, 1],
-        "yolo12m-p34": [4, 3, 0, 2, 1],
-        "yolo12l-p34": [3, 4, 0, 1, 2],
-        "yolo12x-p34": [3, 2, 4, 0, 1]
+        "yolo12n-p5": [4, 0, 2, 1, 3],
+        "yolo12s-p5": [4, 0, 3, 2, 1],
+        "yolo12m-p5": [4, 3, 0, 2, 1],
+        "yolo12l-p5": [3, 4, 0, 1, 2],
+        "yolo12x-p5": [3, 4, 2, 1, 0]
     }
 
     data_path = "data_full_fold_test.yaml"

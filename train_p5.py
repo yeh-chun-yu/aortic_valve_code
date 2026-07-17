@@ -6,21 +6,21 @@ from pathlib import Path
 
 def main():
     model_list = [
-        "ultralytics/cfg/models/12/yolo12n-p34.yaml",
-        "ultralytics/cfg/models/12/yolo12s-p34.yaml",
-        "ultralytics/cfg/models/12/yolo12m-p34.yaml",
-        "ultralytics/cfg/models/12/yolo12l-p34.yaml",
-        "ultralytics/cfg/models/12/yolo12x-p34.yaml"
+        "ultralytics/cfg/models/12/yolo12n-p5.yaml",
+        "ultralytics/cfg/models/12/yolo12s-p5.yaml",
+        "ultralytics/cfg/models/12/yolo12m-p5.yaml",
+        "ultralytics/cfg/models/12/yolo12l-p5.yaml",
+        "ultralytics/cfg/models/12/yolo12x-p5.yaml"
     ]
 
     # Use a smaller batch size for larger models
     small_batch_models = {
-        "yolo12x-p34.yaml",
+        "yolo12x-p5.yaml",
     }
 
     for model_path in model_list:
-        model_file = Path(model_path).name          # yolo12n-p34.yaml
-        model_stem = Path(model_path).stem          # yolo12n-p34
+        model_file = Path(model_path).name          # yolo12n-p5.yaml
+        model_stem = Path(model_path).stem          # yolo12n-p5
 
         batch_size = 8 if model_file in small_batch_models else 16
 

@@ -92,6 +92,15 @@ pip install pyyaml
 
 ## Dataset Preparation
 
+The dataset can be downloaded from the AI CUP dataset download page.
+
+Please select the following dataset:
+
+**2025 電腦斷層心臟肌肉影像分割競賽II 主動脈瓣物件偵測**
+
+Dataset download page:  
+https://www.aicup.tw/%E5%89%AF%E6%9C%AC-%E8%B3%87%E6%96%99%E9%9B%86%E4%B8%8B%E8%BC%89
+
 Prepare the dataset ZIP files as follows:
 
 ```text
